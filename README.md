@@ -6,7 +6,11 @@
 
 `npm install`
 
-`npm client-i`
+`cd client`
+
+`npm install`
+
+`cd..`
 
 ## To Use
 

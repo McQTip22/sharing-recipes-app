@@ -4,7 +4,6 @@
 	"description": "User authentication for use with future apps.",
 	"main": "index.js",
 	"scripts": {
-		"client-i": "npm install --prefix client",
 		"start": "npm install && node index.js",
 		"server": "nodemon index.js",
 		"client": "npm start --prefix client",
