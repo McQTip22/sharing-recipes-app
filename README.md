@@ -1,9 +1,16 @@
-## recipe app
+# Sharing Recipes
 
-install dependencies 
+>An app that allows users to share their recipies.
 
-then run 
+## Installation
+
+`npm install`
+
+`npm client-i`
+
+## To Use
 
 `npm run dev`
 
-to run in developemnt mode
+### About the Author
+Hey. Thanks for checking out this project. My name is Brian McEwen. Please check out my other work (http://www.brianmcewen.com/) or (https://github.com/McQTip22).
