@@ -27,13 +27,12 @@ require('./config/passport')(passport);
 //routes
 app.use('/api/users', users);
 
-//use react build in client folder
-app.use(express.static(path.join(__dirname, 'client', 'build')));
-
-//apply react build to any unspecified route
-app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
-});
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static('client/build'));
+	app.get('*', (req, res) => {
+		res.sendFile(path.resolve(__dirname, 'client', 'build', ''));
+	});
+}
 
 app.listen(process.env.PORT || 3000, function() {
 	console.log('Express server listening on port %d in %s mode', this.address().port, app.settings.env);
