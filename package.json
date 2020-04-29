@@ -2,7 +2,9 @@
 	"name": "authentication",
 	"version": "1.0.0",
 	"description": "User authentication for use with future apps.",
-	"engines": "12.16.1",
+	"engines": {
+		"node": "12.16.1"
+	},
 	"main": "index.js",
 	"scripts": {
 		"start": "node index.js",
