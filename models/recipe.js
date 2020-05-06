@@ -2,35 +2,40 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const User = require('./user');
 
-const recipeSchema = new Schema(
-	{
-		title: {
-			type: String,
-			required: true
-		},
-		user: {
-			type: Schema.Types.ObjectId,
-			ref: 'User'
-		}
+const UserSchema = new Schema({
+	name: {
+		type: String,
+		required: true
 	},
-	{
-		timestamps: true
-	}
-);
-
-recipeSchema.pre('remove', async function(next) {
-	try {
-		//find user by id
-		let user = await User.findById(this.user);
-		//remove recipe id from user recipe list
-		user.recipes.remove(this.id);
-		//save that user
-		await user.save();
-		return next();
-	} catch (err) {
-		return next(err);
+	user: {
+		type: String,
+		required: false
+	},
+	//will link to it won schema
+	ingredients: {
+		type: String,
+		required: false
+	},
+	//will link to it won schema
+	instructions: {
+		type: String,
+		required: false
+	},
+	notes: {
+		type: String,
+		required: false
+	},
+	// pictureUrl: {
+	// 	type: String,
+	// 	required: false
+	// },
+	date: {
+		type: Date,
+		default: Date.now
 	}
 });
 
-const Recipe = mongoose.model('Recipe', recipeSchema);
+//requires a pre remove function
+
+const Recipe = mongoose.model('recipes', UserSchema);
 module.exports = Recipe;

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Recipe = require('./recipe');
 
 const UserSchema = new Schema({
 	name: {
@@ -18,12 +19,14 @@ const UserSchema = new Schema({
 		type: Date,
 		default: Date.now
 	},
-	messages: [
+	// recipes created by user
+	recipes: [
 		{
 			type: Schema.Types.ObjectId,
-			red: 'Recipe'
+			ref: 'Recipe'
 		}
 	]
+	// saved recepies scema (connect to others recipe names)
 });
-
-module.exports = User = mongoose.model('users', UserSchema);
+const User = mongoose.model('users', UserSchema);
+module.exports = User;

@@ -6,6 +6,7 @@ const passport = require('passport');
 const path = require('path');
 
 const users = require('./routes/api/users');
+const recipes = require('./routes/api/recipes');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,6 +27,7 @@ require('./config/passport')(passport);
 
 //routes
 app.use('/api/users', users);
+app.use('/api/recipes', recipes);
 
 //use react build in client folder
 app.use(express.static(path.join(__dirname, 'client', 'build')));
@@ -35,6 +37,6 @@ app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
-app.listen(process.env.PORT || 3000, function() {
+app.listen(process.env.PORT || 3001, function() {
 	console.log('Express server listening on port %d in %s mode', this.address().port, app.settings.env);
 });
